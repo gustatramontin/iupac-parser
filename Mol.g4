@@ -1,13 +1,13 @@
 grammar Mol;
 
-molecula: ramificacao* cadeia ligacao tipo;
+molecula    : ramificacao* cadeia ligacao tipo;
 
-cadeia: (C1 | C2 | C3 | C4 | C5 | C6 | C7 | C8 | C9 | C10);
-ligacao: pos '-' numero? (SIMPLES | DUPLA | TRIPLA);
-tipo: HIDROCARBONETO;
-ramificacao:  pos '-' numero? cadeia 'il' '-'?;
-numero: 'di' | 'tri' | 'tetra';
-pos: (INT ',')* INT;
+cadeia      : (C1 | C2 | C3 | C4 | C5 | C6 | C7 | C8 | C9 | C10);
+ligacao     : pos '-' numero? (SIMPLES | DUPLA | TRIPLA);
+tipo        : HIDROCARBONETO;
+ramificacao :  pos '-' numero? cadeia 'il' '-'?;
+numero      : 'di' | 'tri' | 'tetra';
+pos         : (INT ',')* INT;
 
 C1  : 'met';
 C2  : 'et';
@@ -21,9 +21,10 @@ C9  : 'non';
 C10 : 'dec';
 
 SIMPLES : 'an';
-DUPLA: 'en';
-TRIPLA: 'in';
+DUPLA   : 'en';
+TRIPLA  : 'in';
 
-HIDROCARBONETO: 'o';
+HIDROCARBONETO : 'o';
 
-INT     : [0-9]+ ;
+INT        : [0-9]+ ;
+WHITESPACE : ' ' -> skip;

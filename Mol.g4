@@ -1,30 +1,33 @@
 grammar Mol;
 
-molecula    : ramificacao* cadeia ligacao tipo;
+molecula    : ramificacao* cadeia_principal insaturacao grupo_funcional EOF;
 
-cadeia      : (C1 | C2 | C3 | C4 | C5 | C6 | C7 | C8 | C9 | C10);
-ligacao     : pos '-' numero? (SIMPLES | DUPLA | TRIPLA);
-tipo        : HIDROCARBONETO;
-ramificacao :  pos '-' numero? cadeia 'il' '-'?;
+cadeia_principal      : PREFIXO;
+ramificacao           : ('-' pos '-' numero?)? cadeia_principal 'il' '-'?;
+insaturacao           : ('-' pos '-' numero?)? (LIGACAO);
+grupo_funcional       : GRUPO_FUNCIONAL;
+
 numero      : 'di' | 'tri' | 'tetra';
 pos         : (INT ',')* INT;
 
-C1  : 'met';
-C2  : 'et';
-C3  : 'prop';
-C4  : 'but';
-C5  : 'pent';
-C6  : 'hex';
-C7  : 'hept';
-C8  : 'oct';
-C9  : 'non';
-C10 : 'dec';
+PREFIXO : 
+   'met'
+ | 'et'
+ | 'prop'
+ | 'but'
+ | 'pent'
+ | 'hex'
+ | 'hept'
+ | 'oct'
+ | 'non'
+ | 'dec';
 
-SIMPLES : 'an';
-DUPLA   : 'en';
-TRIPLA  : 'in';
+LIGACAO :
+   'an'
+ | 'en'
+ | 'in';
 
-HIDROCARBONETO : 'o';
+GRUPO_FUNCIONAL : 'o';
 
 INT        : [0-9]+ ;
 WHITESPACE : ' ' -> skip;

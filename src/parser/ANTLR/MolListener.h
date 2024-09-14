@@ -17,17 +17,17 @@ public:
   virtual void enterMolecula(MolParser::MoleculaContext *ctx) = 0;
   virtual void exitMolecula(MolParser::MoleculaContext *ctx) = 0;
 
-  virtual void enterCadeia(MolParser::CadeiaContext *ctx) = 0;
-  virtual void exitCadeia(MolParser::CadeiaContext *ctx) = 0;
-
-  virtual void enterLigacao(MolParser::LigacaoContext *ctx) = 0;
-  virtual void exitLigacao(MolParser::LigacaoContext *ctx) = 0;
-
-  virtual void enterTipo(MolParser::TipoContext *ctx) = 0;
-  virtual void exitTipo(MolParser::TipoContext *ctx) = 0;
+  virtual void enterCadeia_principal(MolParser::Cadeia_principalContext *ctx) = 0;
+  virtual void exitCadeia_principal(MolParser::Cadeia_principalContext *ctx) = 0;
 
   virtual void enterRamificacao(MolParser::RamificacaoContext *ctx) = 0;
   virtual void exitRamificacao(MolParser::RamificacaoContext *ctx) = 0;
+
+  virtual void enterInsaturacao(MolParser::InsaturacaoContext *ctx) = 0;
+  virtual void exitInsaturacao(MolParser::InsaturacaoContext *ctx) = 0;
+
+  virtual void enterGrupo_funcional(MolParser::Grupo_funcionalContext *ctx) = 0;
+  virtual void exitGrupo_funcional(MolParser::Grupo_funcionalContext *ctx) = 0;
 
   virtual void enterNumero(MolParser::NumeroContext *ctx) = 0;
   virtual void exitNumero(MolParser::NumeroContext *ctx) = 0;

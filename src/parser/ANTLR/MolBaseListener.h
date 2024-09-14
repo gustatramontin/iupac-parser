@@ -19,17 +19,17 @@ public:
   virtual void enterMolecula(MolParser::MoleculaContext * /*ctx*/) override { }
   virtual void exitMolecula(MolParser::MoleculaContext * /*ctx*/) override { }
 
-  virtual void enterCadeia(MolParser::CadeiaContext * /*ctx*/) override { }
-  virtual void exitCadeia(MolParser::CadeiaContext * /*ctx*/) override { }
-
-  virtual void enterLigacao(MolParser::LigacaoContext * /*ctx*/) override { }
-  virtual void exitLigacao(MolParser::LigacaoContext * /*ctx*/) override { }
-
-  virtual void enterTipo(MolParser::TipoContext * /*ctx*/) override { }
-  virtual void exitTipo(MolParser::TipoContext * /*ctx*/) override { }
+  virtual void enterCadeia_principal(MolParser::Cadeia_principalContext * /*ctx*/) override { }
+  virtual void exitCadeia_principal(MolParser::Cadeia_principalContext * /*ctx*/) override { }
 
   virtual void enterRamificacao(MolParser::RamificacaoContext * /*ctx*/) override { }
   virtual void exitRamificacao(MolParser::RamificacaoContext * /*ctx*/) override { }
+
+  virtual void enterInsaturacao(MolParser::InsaturacaoContext * /*ctx*/) override { }
+  virtual void exitInsaturacao(MolParser::InsaturacaoContext * /*ctx*/) override { }
+
+  virtual void enterGrupo_funcional(MolParser::Grupo_funcionalContext * /*ctx*/) override { }
+  virtual void exitGrupo_funcional(MolParser::Grupo_funcionalContext * /*ctx*/) override { }
 
   virtual void enterNumero(MolParser::NumeroContext * /*ctx*/) override { }
   virtual void exitNumero(MolParser::NumeroContext * /*ctx*/) override { }

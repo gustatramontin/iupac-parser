@@ -1,5 +1,5 @@
 
-// Generated from IUPAC.g4 by ANTLR 4.13.2
+// Generated from Mol.g4 by ANTLR 4.13.2
 
 #pragma once
 
@@ -9,18 +9,16 @@
 
 
 
-class  IUPACLexer : public antlr4::Lexer {
+class  MolLexer : public antlr4::Lexer {
 public:
   enum {
-    T__0 = 1, T__1 = 2, T__2 = 3, T__3 = 4, T__4 = 5, T__5 = 6, C1 = 7, 
-    C2 = 8, C3 = 9, C4 = 10, C5 = 11, C6 = 12, C7 = 13, C8 = 14, C9 = 15, 
-    C10 = 16, SIMPLES = 17, DUPLA = 18, TRIPLA = 19, HIDROCARBONETO = 20, 
-    INT = 21
+    T__0 = 1, T__1 = 2, T__2 = 3, T__3 = 4, T__4 = 5, T__5 = 6, PREFIXO = 7, 
+    LIGACAO = 8, GRUPO_FUNCIONAL = 9, INT = 10, WHITESPACE = 11
   };
 
-  explicit IUPACLexer(antlr4::CharStream *input);
+  explicit MolLexer(antlr4::CharStream *input);
 
-  ~IUPACLexer() override;
+  ~MolLexer() override;
 
 
   std::string getGrammarFileName() const override;

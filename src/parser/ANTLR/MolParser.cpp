@@ -52,37 +52,37 @@ void molParserInitialize() {
 #endif
   auto staticData = std::make_unique<MolParserStaticData>(
     std::vector<std::string>{
-      "molecula", "cadeia", "ligacao", "tipo", "ramificacao", "numero", 
-      "pos"
+      "molecula", "cadeia_principal", "ramificacao", "insaturacao", "grupo_funcional", 
+      "numero", "pos"
     },
     std::vector<std::string>{
-      "", "'-'", "'il'", "'di'", "'tri'", "'tetra'", "','", "'met'", "'et'", 
-      "'prop'", "'but'", "'pent'", "'hex'", "'hept'", "'oct'", "'non'", 
-      "'dec'", "'an'", "'en'", "'in'", "'o'"
+      "", "'-'", "'il'", "'di'", "'tri'", "'tetra'", "','", "", "", "'o'", 
+      "", "' '"
     },
     std::vector<std::string>{
-      "", "", "", "", "", "", "", "C1", "C2", "C3", "C4", "C5", "C6", "C7", 
-      "C8", "C9", "C10", "SIMPLES", "DUPLA", "TRIPLA", "HIDROCARBONETO", 
-      "INT"
+      "", "", "", "", "", "", "", "PREFIXO", "LIGACAO", "GRUPO_FUNCIONAL", 
+      "INT", "WHITESPACE"
     }
   );
   static const int32_t serializedATNSegment[] = {
-  	4,1,21,57,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,6,1,0,
-  	5,0,16,8,0,10,0,12,0,19,9,0,1,0,1,0,1,0,1,0,1,1,1,1,1,2,1,2,1,2,3,2,30,
-  	8,2,1,2,1,2,1,3,1,3,1,4,1,4,1,4,3,4,39,8,4,1,4,1,4,1,4,3,4,44,8,4,1,5,
-  	1,5,1,6,1,6,5,6,50,8,6,10,6,12,6,53,9,6,1,6,1,6,1,6,0,0,7,0,2,4,6,8,10,
-  	12,0,3,1,0,7,16,1,0,17,19,1,0,3,5,54,0,17,1,0,0,0,2,24,1,0,0,0,4,26,1,
-  	0,0,0,6,33,1,0,0,0,8,35,1,0,0,0,10,45,1,0,0,0,12,51,1,0,0,0,14,16,3,8,
-  	4,0,15,14,1,0,0,0,16,19,1,0,0,0,17,15,1,0,0,0,17,18,1,0,0,0,18,20,1,0,
-  	0,0,19,17,1,0,0,0,20,21,3,2,1,0,21,22,3,4,2,0,22,23,3,6,3,0,23,1,1,0,
-  	0,0,24,25,7,0,0,0,25,3,1,0,0,0,26,27,3,12,6,0,27,29,5,1,0,0,28,30,3,10,
-  	5,0,29,28,1,0,0,0,29,30,1,0,0,0,30,31,1,0,0,0,31,32,7,1,0,0,32,5,1,0,
-  	0,0,33,34,5,20,0,0,34,7,1,0,0,0,35,36,3,12,6,0,36,38,5,1,0,0,37,39,3,
-  	10,5,0,38,37,1,0,0,0,38,39,1,0,0,0,39,40,1,0,0,0,40,41,3,2,1,0,41,43,
-  	5,2,0,0,42,44,5,1,0,0,43,42,1,0,0,0,43,44,1,0,0,0,44,9,1,0,0,0,45,46,
-  	7,2,0,0,46,11,1,0,0,0,47,48,5,21,0,0,48,50,5,6,0,0,49,47,1,0,0,0,50,53,
-  	1,0,0,0,51,49,1,0,0,0,51,52,1,0,0,0,52,54,1,0,0,0,53,51,1,0,0,0,54,55,
-  	5,21,0,0,55,13,1,0,0,0,5,17,29,38,43,51
+  	4,1,11,64,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,6,1,0,
+  	5,0,16,8,0,10,0,12,0,19,9,0,1,0,1,0,1,0,1,0,1,0,1,1,1,1,1,2,1,2,1,2,1,
+  	2,3,2,32,8,2,3,2,34,8,2,1,2,1,2,1,2,3,2,39,8,2,1,3,1,3,1,3,1,3,3,3,45,
+  	8,3,3,3,47,8,3,1,3,1,3,1,4,1,4,1,5,1,5,1,6,1,6,5,6,57,8,6,10,6,12,6,60,
+  	9,6,1,6,1,6,1,6,0,0,7,0,2,4,6,8,10,12,0,1,1,0,3,5,63,0,17,1,0,0,0,2,25,
+  	1,0,0,0,4,33,1,0,0,0,6,46,1,0,0,0,8,50,1,0,0,0,10,52,1,0,0,0,12,58,1,
+  	0,0,0,14,16,3,4,2,0,15,14,1,0,0,0,16,19,1,0,0,0,17,15,1,0,0,0,17,18,1,
+  	0,0,0,18,20,1,0,0,0,19,17,1,0,0,0,20,21,3,2,1,0,21,22,3,6,3,0,22,23,3,
+  	8,4,0,23,24,5,0,0,1,24,1,1,0,0,0,25,26,5,7,0,0,26,3,1,0,0,0,27,28,5,1,
+  	0,0,28,29,3,12,6,0,29,31,5,1,0,0,30,32,3,10,5,0,31,30,1,0,0,0,31,32,1,
+  	0,0,0,32,34,1,0,0,0,33,27,1,0,0,0,33,34,1,0,0,0,34,35,1,0,0,0,35,36,3,
+  	2,1,0,36,38,5,2,0,0,37,39,5,1,0,0,38,37,1,0,0,0,38,39,1,0,0,0,39,5,1,
+  	0,0,0,40,41,5,1,0,0,41,42,3,12,6,0,42,44,5,1,0,0,43,45,3,10,5,0,44,43,
+  	1,0,0,0,44,45,1,0,0,0,45,47,1,0,0,0,46,40,1,0,0,0,46,47,1,0,0,0,47,48,
+  	1,0,0,0,48,49,5,8,0,0,49,7,1,0,0,0,50,51,5,9,0,0,51,9,1,0,0,0,52,53,7,
+  	0,0,0,53,11,1,0,0,0,54,55,5,10,0,0,55,57,5,6,0,0,56,54,1,0,0,0,57,60,
+  	1,0,0,0,58,56,1,0,0,0,58,59,1,0,0,0,59,61,1,0,0,0,60,58,1,0,0,0,61,62,
+  	5,10,0,0,62,13,1,0,0,0,7,17,31,33,38,44,46,58
   };
   staticData->serializedATN = antlr4::atn::SerializedATNView(serializedATNSegment, sizeof(serializedATNSegment) / sizeof(serializedATNSegment[0]));
 
@@ -137,16 +137,20 @@ MolParser::MoleculaContext::MoleculaContext(ParserRuleContext *parent, size_t in
   : ParserRuleContext(parent, invokingState) {
 }
 
-MolParser::CadeiaContext* MolParser::MoleculaContext::cadeia() {
-  return getRuleContext<MolParser::CadeiaContext>(0);
+MolParser::Cadeia_principalContext* MolParser::MoleculaContext::cadeia_principal() {
+  return getRuleContext<MolParser::Cadeia_principalContext>(0);
 }
 
-MolParser::LigacaoContext* MolParser::MoleculaContext::ligacao() {
-  return getRuleContext<MolParser::LigacaoContext>(0);
+MolParser::InsaturacaoContext* MolParser::MoleculaContext::insaturacao() {
+  return getRuleContext<MolParser::InsaturacaoContext>(0);
 }
 
-MolParser::TipoContext* MolParser::MoleculaContext::tipo() {
-  return getRuleContext<MolParser::TipoContext>(0);
+MolParser::Grupo_funcionalContext* MolParser::MoleculaContext::grupo_funcional() {
+  return getRuleContext<MolParser::Grupo_funcionalContext>(0);
+}
+
+tree::TerminalNode* MolParser::MoleculaContext::EOF() {
+  return getToken(MolParser::EOF, 0);
 }
 
 std::vector<MolParser::RamificacaoContext *> MolParser::MoleculaContext::ramificacao() {
@@ -177,7 +181,6 @@ void MolParser::MoleculaContext::exitRule(tree::ParseTreeListener *listener) {
 MolParser::MoleculaContext* MolParser::molecula() {
   MoleculaContext *_localctx = _tracker.createInstance<MoleculaContext>(_ctx, getState());
   enterRule(_localctx, 0, MolParser::RuleMolecula);
-  size_t _la = 0;
 
 #if __cplusplus > 201703L
   auto onExit = finally([=, this] {
@@ -187,23 +190,28 @@ MolParser::MoleculaContext* MolParser::molecula() {
     exitRule();
   });
   try {
+    size_t alt;
     enterOuterAlt(_localctx, 1);
     setState(17);
     _errHandler->sync(this);
-    _la = _input->LA(1);
-    while (_la == MolParser::INT) {
-      setState(14);
-      ramificacao();
+    alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 0, _ctx);
+    while (alt != 2 && alt != atn::ATN::INVALID_ALT_NUMBER) {
+      if (alt == 1) {
+        setState(14);
+        ramificacao(); 
+      }
       setState(19);
       _errHandler->sync(this);
-      _la = _input->LA(1);
+      alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 0, _ctx);
     }
     setState(20);
-    cadeia();
+    cadeia_principal();
     setState(21);
-    ligacao();
+    insaturacao();
     setState(22);
-    tipo();
+    grupo_funcional();
+    setState(23);
+    match(MolParser::EOF);
    
   }
   catch (RecognitionException &e) {
@@ -215,73 +223,36 @@ MolParser::MoleculaContext* MolParser::molecula() {
   return _localctx;
 }
 
-//----------------- CadeiaContext ------------------------------------------------------------------
+//----------------- Cadeia_principalContext ------------------------------------------------------------------
 
-MolParser::CadeiaContext::CadeiaContext(ParserRuleContext *parent, size_t invokingState)
+MolParser::Cadeia_principalContext::Cadeia_principalContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* MolParser::CadeiaContext::C1() {
-  return getToken(MolParser::C1, 0);
-}
-
-tree::TerminalNode* MolParser::CadeiaContext::C2() {
-  return getToken(MolParser::C2, 0);
-}
-
-tree::TerminalNode* MolParser::CadeiaContext::C3() {
-  return getToken(MolParser::C3, 0);
-}
-
-tree::TerminalNode* MolParser::CadeiaContext::C4() {
-  return getToken(MolParser::C4, 0);
-}
-
-tree::TerminalNode* MolParser::CadeiaContext::C5() {
-  return getToken(MolParser::C5, 0);
-}
-
-tree::TerminalNode* MolParser::CadeiaContext::C6() {
-  return getToken(MolParser::C6, 0);
-}
-
-tree::TerminalNode* MolParser::CadeiaContext::C7() {
-  return getToken(MolParser::C7, 0);
-}
-
-tree::TerminalNode* MolParser::CadeiaContext::C8() {
-  return getToken(MolParser::C8, 0);
-}
-
-tree::TerminalNode* MolParser::CadeiaContext::C9() {
-  return getToken(MolParser::C9, 0);
-}
-
-tree::TerminalNode* MolParser::CadeiaContext::C10() {
-  return getToken(MolParser::C10, 0);
+tree::TerminalNode* MolParser::Cadeia_principalContext::PREFIXO() {
+  return getToken(MolParser::PREFIXO, 0);
 }
 
 
-size_t MolParser::CadeiaContext::getRuleIndex() const {
-  return MolParser::RuleCadeia;
+size_t MolParser::Cadeia_principalContext::getRuleIndex() const {
+  return MolParser::RuleCadeia_principal;
 }
 
-void MolParser::CadeiaContext::enterRule(tree::ParseTreeListener *listener) {
+void MolParser::Cadeia_principalContext::enterRule(tree::ParseTreeListener *listener) {
   auto parserListener = dynamic_cast<MolListener *>(listener);
   if (parserListener != nullptr)
-    parserListener->enterCadeia(this);
+    parserListener->enterCadeia_principal(this);
 }
 
-void MolParser::CadeiaContext::exitRule(tree::ParseTreeListener *listener) {
+void MolParser::Cadeia_principalContext::exitRule(tree::ParseTreeListener *listener) {
   auto parserListener = dynamic_cast<MolListener *>(listener);
   if (parserListener != nullptr)
-    parserListener->exitCadeia(this);
+    parserListener->exitCadeia_principal(this);
 }
 
-MolParser::CadeiaContext* MolParser::cadeia() {
-  CadeiaContext *_localctx = _tracker.createInstance<CadeiaContext>(_ctx, getState());
-  enterRule(_localctx, 2, MolParser::RuleCadeia);
-  size_t _la = 0;
+MolParser::Cadeia_principalContext* MolParser::cadeia_principal() {
+  Cadeia_principalContext *_localctx = _tracker.createInstance<Cadeia_principalContext>(_ctx, getState());
+  enterRule(_localctx, 2, MolParser::RuleCadeia_principal);
 
 #if __cplusplus > 201703L
   auto onExit = finally([=, this] {
@@ -292,160 +263,8 @@ MolParser::CadeiaContext* MolParser::cadeia() {
   });
   try {
     enterOuterAlt(_localctx, 1);
-    setState(24);
-    _la = _input->LA(1);
-    if (!((((_la & ~ 0x3fULL) == 0) &&
-      ((1ULL << _la) & 130944) != 0))) {
-    _errHandler->recoverInline(this);
-    }
-    else {
-      _errHandler->reportMatch(this);
-      consume();
-    }
-   
-  }
-  catch (RecognitionException &e) {
-    _errHandler->reportError(this, e);
-    _localctx->exception = std::current_exception();
-    _errHandler->recover(this, _localctx->exception);
-  }
-
-  return _localctx;
-}
-
-//----------------- LigacaoContext ------------------------------------------------------------------
-
-MolParser::LigacaoContext::LigacaoContext(ParserRuleContext *parent, size_t invokingState)
-  : ParserRuleContext(parent, invokingState) {
-}
-
-MolParser::PosContext* MolParser::LigacaoContext::pos() {
-  return getRuleContext<MolParser::PosContext>(0);
-}
-
-tree::TerminalNode* MolParser::LigacaoContext::SIMPLES() {
-  return getToken(MolParser::SIMPLES, 0);
-}
-
-tree::TerminalNode* MolParser::LigacaoContext::DUPLA() {
-  return getToken(MolParser::DUPLA, 0);
-}
-
-tree::TerminalNode* MolParser::LigacaoContext::TRIPLA() {
-  return getToken(MolParser::TRIPLA, 0);
-}
-
-MolParser::NumeroContext* MolParser::LigacaoContext::numero() {
-  return getRuleContext<MolParser::NumeroContext>(0);
-}
-
-
-size_t MolParser::LigacaoContext::getRuleIndex() const {
-  return MolParser::RuleLigacao;
-}
-
-void MolParser::LigacaoContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<MolListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterLigacao(this);
-}
-
-void MolParser::LigacaoContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<MolListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitLigacao(this);
-}
-
-MolParser::LigacaoContext* MolParser::ligacao() {
-  LigacaoContext *_localctx = _tracker.createInstance<LigacaoContext>(_ctx, getState());
-  enterRule(_localctx, 4, MolParser::RuleLigacao);
-  size_t _la = 0;
-
-#if __cplusplus > 201703L
-  auto onExit = finally([=, this] {
-#else
-  auto onExit = finally([=] {
-#endif
-    exitRule();
-  });
-  try {
-    enterOuterAlt(_localctx, 1);
-    setState(26);
-    pos();
-    setState(27);
-    match(MolParser::T__0);
-    setState(29);
-    _errHandler->sync(this);
-
-    _la = _input->LA(1);
-    if ((((_la & ~ 0x3fULL) == 0) &&
-      ((1ULL << _la) & 56) != 0)) {
-      setState(28);
-      numero();
-    }
-    setState(31);
-    _la = _input->LA(1);
-    if (!((((_la & ~ 0x3fULL) == 0) &&
-      ((1ULL << _la) & 917504) != 0))) {
-    _errHandler->recoverInline(this);
-    }
-    else {
-      _errHandler->reportMatch(this);
-      consume();
-    }
-   
-  }
-  catch (RecognitionException &e) {
-    _errHandler->reportError(this, e);
-    _localctx->exception = std::current_exception();
-    _errHandler->recover(this, _localctx->exception);
-  }
-
-  return _localctx;
-}
-
-//----------------- TipoContext ------------------------------------------------------------------
-
-MolParser::TipoContext::TipoContext(ParserRuleContext *parent, size_t invokingState)
-  : ParserRuleContext(parent, invokingState) {
-}
-
-tree::TerminalNode* MolParser::TipoContext::HIDROCARBONETO() {
-  return getToken(MolParser::HIDROCARBONETO, 0);
-}
-
-
-size_t MolParser::TipoContext::getRuleIndex() const {
-  return MolParser::RuleTipo;
-}
-
-void MolParser::TipoContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<MolListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterTipo(this);
-}
-
-void MolParser::TipoContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<MolListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitTipo(this);
-}
-
-MolParser::TipoContext* MolParser::tipo() {
-  TipoContext *_localctx = _tracker.createInstance<TipoContext>(_ctx, getState());
-  enterRule(_localctx, 6, MolParser::RuleTipo);
-
-#if __cplusplus > 201703L
-  auto onExit = finally([=, this] {
-#else
-  auto onExit = finally([=] {
-#endif
-    exitRule();
-  });
-  try {
-    enterOuterAlt(_localctx, 1);
-    setState(33);
-    match(MolParser::HIDROCARBONETO);
+    setState(25);
+    match(MolParser::PREFIXO);
    
   }
   catch (RecognitionException &e) {
@@ -463,12 +282,12 @@ MolParser::RamificacaoContext::RamificacaoContext(ParserRuleContext *parent, siz
   : ParserRuleContext(parent, invokingState) {
 }
 
-MolParser::PosContext* MolParser::RamificacaoContext::pos() {
-  return getRuleContext<MolParser::PosContext>(0);
+MolParser::Cadeia_principalContext* MolParser::RamificacaoContext::cadeia_principal() {
+  return getRuleContext<MolParser::Cadeia_principalContext>(0);
 }
 
-MolParser::CadeiaContext* MolParser::RamificacaoContext::cadeia() {
-  return getRuleContext<MolParser::CadeiaContext>(0);
+MolParser::PosContext* MolParser::RamificacaoContext::pos() {
+  return getRuleContext<MolParser::PosContext>(0);
 }
 
 MolParser::NumeroContext* MolParser::RamificacaoContext::numero() {
@@ -494,7 +313,7 @@ void MolParser::RamificacaoContext::exitRule(tree::ParseTreeListener *listener) 
 
 MolParser::RamificacaoContext* MolParser::ramificacao() {
   RamificacaoContext *_localctx = _tracker.createInstance<RamificacaoContext>(_ctx, getState());
-  enterRule(_localctx, 8, MolParser::RuleRamificacao);
+  enterRule(_localctx, 4, MolParser::RuleRamificacao);
   size_t _la = 0;
 
 #if __cplusplus > 201703L
@@ -506,31 +325,181 @@ MolParser::RamificacaoContext* MolParser::ramificacao() {
   });
   try {
     enterOuterAlt(_localctx, 1);
-    setState(35);
-    pos();
-    setState(36);
-    match(MolParser::T__0);
-    setState(38);
-    _errHandler->sync(this);
-
-    _la = _input->LA(1);
-    if ((((_la & ~ 0x3fULL) == 0) &&
-      ((1ULL << _la) & 56) != 0)) {
-      setState(37);
-      numero();
-    }
-    setState(40);
-    cadeia();
-    setState(41);
-    match(MolParser::T__1);
-    setState(43);
+    setState(33);
     _errHandler->sync(this);
 
     _la = _input->LA(1);
     if (_la == MolParser::T__0) {
+      setState(27);
+      match(MolParser::T__0);
+      setState(28);
+      pos();
+      setState(29);
+      match(MolParser::T__0);
+      setState(31);
+      _errHandler->sync(this);
+
+      _la = _input->LA(1);
+      if ((((_la & ~ 0x3fULL) == 0) &&
+        ((1ULL << _la) & 56) != 0)) {
+        setState(30);
+        numero();
+      }
+    }
+    setState(35);
+    cadeia_principal();
+    setState(36);
+    match(MolParser::T__1);
+    setState(38);
+    _errHandler->sync(this);
+
+    switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 3, _ctx)) {
+    case 1: {
+      setState(37);
+      match(MolParser::T__0);
+      break;
+    }
+
+    default:
+      break;
+    }
+   
+  }
+  catch (RecognitionException &e) {
+    _errHandler->reportError(this, e);
+    _localctx->exception = std::current_exception();
+    _errHandler->recover(this, _localctx->exception);
+  }
+
+  return _localctx;
+}
+
+//----------------- InsaturacaoContext ------------------------------------------------------------------
+
+MolParser::InsaturacaoContext::InsaturacaoContext(ParserRuleContext *parent, size_t invokingState)
+  : ParserRuleContext(parent, invokingState) {
+}
+
+tree::TerminalNode* MolParser::InsaturacaoContext::LIGACAO() {
+  return getToken(MolParser::LIGACAO, 0);
+}
+
+MolParser::PosContext* MolParser::InsaturacaoContext::pos() {
+  return getRuleContext<MolParser::PosContext>(0);
+}
+
+MolParser::NumeroContext* MolParser::InsaturacaoContext::numero() {
+  return getRuleContext<MolParser::NumeroContext>(0);
+}
+
+
+size_t MolParser::InsaturacaoContext::getRuleIndex() const {
+  return MolParser::RuleInsaturacao;
+}
+
+void MolParser::InsaturacaoContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<MolListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterInsaturacao(this);
+}
+
+void MolParser::InsaturacaoContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<MolListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitInsaturacao(this);
+}
+
+MolParser::InsaturacaoContext* MolParser::insaturacao() {
+  InsaturacaoContext *_localctx = _tracker.createInstance<InsaturacaoContext>(_ctx, getState());
+  enterRule(_localctx, 6, MolParser::RuleInsaturacao);
+  size_t _la = 0;
+
+#if __cplusplus > 201703L
+  auto onExit = finally([=, this] {
+#else
+  auto onExit = finally([=] {
+#endif
+    exitRule();
+  });
+  try {
+    enterOuterAlt(_localctx, 1);
+    setState(46);
+    _errHandler->sync(this);
+
+    _la = _input->LA(1);
+    if (_la == MolParser::T__0) {
+      setState(40);
+      match(MolParser::T__0);
+      setState(41);
+      pos();
       setState(42);
       match(MolParser::T__0);
+      setState(44);
+      _errHandler->sync(this);
+
+      _la = _input->LA(1);
+      if ((((_la & ~ 0x3fULL) == 0) &&
+        ((1ULL << _la) & 56) != 0)) {
+        setState(43);
+        numero();
+      }
     }
+
+    setState(48);
+    match(MolParser::LIGACAO);
+   
+  }
+  catch (RecognitionException &e) {
+    _errHandler->reportError(this, e);
+    _localctx->exception = std::current_exception();
+    _errHandler->recover(this, _localctx->exception);
+  }
+
+  return _localctx;
+}
+
+//----------------- Grupo_funcionalContext ------------------------------------------------------------------
+
+MolParser::Grupo_funcionalContext::Grupo_funcionalContext(ParserRuleContext *parent, size_t invokingState)
+  : ParserRuleContext(parent, invokingState) {
+}
+
+tree::TerminalNode* MolParser::Grupo_funcionalContext::GRUPO_FUNCIONAL() {
+  return getToken(MolParser::GRUPO_FUNCIONAL, 0);
+}
+
+
+size_t MolParser::Grupo_funcionalContext::getRuleIndex() const {
+  return MolParser::RuleGrupo_funcional;
+}
+
+void MolParser::Grupo_funcionalContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<MolListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterGrupo_funcional(this);
+}
+
+void MolParser::Grupo_funcionalContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<MolListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitGrupo_funcional(this);
+}
+
+MolParser::Grupo_funcionalContext* MolParser::grupo_funcional() {
+  Grupo_funcionalContext *_localctx = _tracker.createInstance<Grupo_funcionalContext>(_ctx, getState());
+  enterRule(_localctx, 8, MolParser::RuleGrupo_funcional);
+
+#if __cplusplus > 201703L
+  auto onExit = finally([=, this] {
+#else
+  auto onExit = finally([=] {
+#endif
+    exitRule();
+  });
+  try {
+    enterOuterAlt(_localctx, 1);
+    setState(50);
+    match(MolParser::GRUPO_FUNCIONAL);
    
   }
   catch (RecognitionException &e) {
@@ -579,7 +548,7 @@ MolParser::NumeroContext* MolParser::numero() {
   });
   try {
     enterOuterAlt(_localctx, 1);
-    setState(45);
+    setState(52);
     _la = _input->LA(1);
     if (!((((_la & ~ 0x3fULL) == 0) &&
       ((1ULL << _la) & 56) != 0))) {
@@ -645,21 +614,21 @@ MolParser::PosContext* MolParser::pos() {
   try {
     size_t alt;
     enterOuterAlt(_localctx, 1);
-    setState(51);
+    setState(58);
     _errHandler->sync(this);
-    alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 4, _ctx);
+    alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 6, _ctx);
     while (alt != 2 && alt != atn::ATN::INVALID_ALT_NUMBER) {
       if (alt == 1) {
-        setState(47);
+        setState(54);
         match(MolParser::INT);
-        setState(48);
+        setState(55);
         match(MolParser::T__5); 
       }
-      setState(53);
+      setState(60);
       _errHandler->sync(this);
-      alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 4, _ctx);
+      alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 6, _ctx);
     }
-    setState(54);
+    setState(61);
     match(MolParser::INT);
    
   }

@@ -3,7 +3,7 @@ grammar Mol;
 molecula    : ramificacao* cadeia insaturacao grupo_funcional EOF;
 
 cadeia: PREFIXO;
-ramificacao           : ('-'? pos '-' numero?)? cadeia'il' '-'?;
+ramificacao           : ('-'? pos '-' numero?)? cadeia 'il' '-'?;
 insaturacao           : ('-' pos '-' numero?)? (LIGACAO);
 grupo_funcional       : GRUPO_FUNCIONAL;
 

@@ -4,6 +4,7 @@
 #include "src/parser/MolLexer.h"
 #include "src/parser/MolParser.h"
 #include "src/parser/MolListener.h"
+#include "src/molecule.hpp"
 
 using namespace std;
 using namespace antlr4;
@@ -11,16 +12,39 @@ using namespace antlr4;
 class  MyListener : public MolListener {
 public:
 
+  Molecule m;
+  bool is_ramificacao = false;
+  MyListener(): m{"Test"} {}
   virtual void enterMolecula(MolParser::MoleculaContext * ctx) override {}
-  virtual void exitMolecula(MolParser::MoleculaContext * ctx) override { }
+  virtual void exitMolecula(MolParser::MoleculaContext * ctx) override { 
+	  m.print();
+  }
 
   virtual void enterCadeia_principal(MolParser::Cadeia_principalContext * ctx) override { 
+
         cout << ctx->PREFIXO()->getText() << "\n";
+	if (!is_ramificacao)
+		m.add_cadeia_principal(ctx->PREFIXO()->getText());
     }
   virtual void exitCadeia_principal(MolParser::Cadeia_principalContext * ctx) override { }
 
-  virtual void enterRamificacao(MolParser::RamificacaoContext * ctx) override { }
-  virtual void exitRamificacao(MolParser::RamificacaoContext * ctx) override { }
+  virtual void enterRamificacao(MolParser::RamificacaoContext * ctx) override {
+	  is_ramificacao = true;
+	  string prefix = ctx->cadeia_principal()->PREFIXO()->getText();
+          auto pos_token = ctx->pos()->INT();
+		if (pos_token.size() == 0) {
+			int pos = 0;
+			  m.add_ramificacao(pos, prefix);
+		}
+	  for ( auto pos_token : ctx->pos()->INT()) {
+		  int pos = stoi(pos_token->getText());
+		  cout << pos << "\n";
+		  m.add_ramificacao(pos, prefix);
+	  }
+  }
+  virtual void exitRamificacao(MolParser::RamificacaoContext * ctx) override { 
+	  is_ramificacao = false;
+  }
 
   virtual void enterInsaturacao(MolParser::InsaturacaoContext * ctx) override { }
   virtual void exitInsaturacao(MolParser::InsaturacaoContext * ctx) override { }

@@ -32,7 +32,11 @@ public:
 	vector<Bond> bonds;
 
 	Molecule(string name);
-	void addAtom(Atom a, Bond b);
+	void add_atom(Atom a, Bond b);
+	int cadeia_n(string n);
+	void add_line(int begin, int n);
+	void add_cadeia_principal(string prefixo);
+	void add_ramificacao(int pos, string prefixo);
 
 	void print();
 };

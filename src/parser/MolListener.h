@@ -17,8 +17,8 @@ public:
   virtual void enterMolecula(MolParser::MoleculaContext *ctx) = 0;
   virtual void exitMolecula(MolParser::MoleculaContext *ctx) = 0;
 
-  virtual void enterCadeia_principal(MolParser::Cadeia_principalContext *ctx) = 0;
-  virtual void exitCadeia_principal(MolParser::Cadeia_principalContext *ctx) = 0;
+  virtual void enterCadeia(MolParser::CadeiaContext *ctx) = 0;
+  virtual void exitCadeia(MolParser::CadeiaContext *ctx) = 0;
 
   virtual void enterRamificacao(MolParser::RamificacaoContext *ctx) = 0;
   virtual void exitRamificacao(MolParser::RamificacaoContext *ctx) = 0;

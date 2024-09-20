@@ -52,7 +52,7 @@ void molParserInitialize() {
 #endif
   auto staticData = std::make_unique<MolParserStaticData>(
     std::vector<std::string>{
-      "molecula", "cadeia_principal", "ramificacao", "insaturacao", "grupo_funcional", 
+      "molecula", "cadeia", "ramificacao", "insaturacao", "grupo_funcional", 
       "numero", "pos"
     },
     std::vector<std::string>{
@@ -65,24 +65,25 @@ void molParserInitialize() {
     }
   );
   static const int32_t serializedATNSegment[] = {
-  	4,1,11,64,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,6,1,0,
-  	5,0,16,8,0,10,0,12,0,19,9,0,1,0,1,0,1,0,1,0,1,0,1,1,1,1,1,2,1,2,1,2,1,
-  	2,3,2,32,8,2,3,2,34,8,2,1,2,1,2,1,2,3,2,39,8,2,1,3,1,3,1,3,1,3,3,3,45,
-  	8,3,3,3,47,8,3,1,3,1,3,1,4,1,4,1,5,1,5,1,6,1,6,5,6,57,8,6,10,6,12,6,60,
-  	9,6,1,6,1,6,1,6,0,0,7,0,2,4,6,8,10,12,0,1,1,0,3,5,63,0,17,1,0,0,0,2,25,
-  	1,0,0,0,4,33,1,0,0,0,6,46,1,0,0,0,8,50,1,0,0,0,10,52,1,0,0,0,12,58,1,
-  	0,0,0,14,16,3,4,2,0,15,14,1,0,0,0,16,19,1,0,0,0,17,15,1,0,0,0,17,18,1,
-  	0,0,0,18,20,1,0,0,0,19,17,1,0,0,0,20,21,3,2,1,0,21,22,3,6,3,0,22,23,3,
-  	8,4,0,23,24,5,0,0,1,24,1,1,0,0,0,25,26,5,7,0,0,26,3,1,0,0,0,27,28,5,1,
-  	0,0,28,29,3,12,6,0,29,31,5,1,0,0,30,32,3,10,5,0,31,30,1,0,0,0,31,32,1,
-  	0,0,0,32,34,1,0,0,0,33,27,1,0,0,0,33,34,1,0,0,0,34,35,1,0,0,0,35,36,3,
-  	2,1,0,36,38,5,2,0,0,37,39,5,1,0,0,38,37,1,0,0,0,38,39,1,0,0,0,39,5,1,
-  	0,0,0,40,41,5,1,0,0,41,42,3,12,6,0,42,44,5,1,0,0,43,45,3,10,5,0,44,43,
-  	1,0,0,0,44,45,1,0,0,0,45,47,1,0,0,0,46,40,1,0,0,0,46,47,1,0,0,0,47,48,
-  	1,0,0,0,48,49,5,8,0,0,49,7,1,0,0,0,50,51,5,9,0,0,51,9,1,0,0,0,52,53,7,
-  	0,0,0,53,11,1,0,0,0,54,55,5,10,0,0,55,57,5,6,0,0,56,54,1,0,0,0,57,60,
-  	1,0,0,0,58,56,1,0,0,0,58,59,1,0,0,0,59,61,1,0,0,0,60,58,1,0,0,0,61,62,
-  	5,10,0,0,62,13,1,0,0,0,7,17,31,33,38,44,46,58
+  	4,1,11,66,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,6,1,0,
+  	5,0,16,8,0,10,0,12,0,19,9,0,1,0,1,0,1,0,1,0,1,0,1,1,1,1,1,2,3,2,29,8,
+  	2,1,2,1,2,1,2,3,2,34,8,2,3,2,36,8,2,1,2,1,2,1,2,3,2,41,8,2,1,3,1,3,1,
+  	3,1,3,3,3,47,8,3,3,3,49,8,3,1,3,1,3,1,4,1,4,1,5,1,5,1,6,1,6,5,6,59,8,
+  	6,10,6,12,6,62,9,6,1,6,1,6,1,6,0,0,7,0,2,4,6,8,10,12,0,1,1,0,3,5,66,0,
+  	17,1,0,0,0,2,25,1,0,0,0,4,35,1,0,0,0,6,48,1,0,0,0,8,52,1,0,0,0,10,54,
+  	1,0,0,0,12,60,1,0,0,0,14,16,3,4,2,0,15,14,1,0,0,0,16,19,1,0,0,0,17,15,
+  	1,0,0,0,17,18,1,0,0,0,18,20,1,0,0,0,19,17,1,0,0,0,20,21,3,2,1,0,21,22,
+  	3,6,3,0,22,23,3,8,4,0,23,24,5,0,0,1,24,1,1,0,0,0,25,26,5,7,0,0,26,3,1,
+  	0,0,0,27,29,5,1,0,0,28,27,1,0,0,0,28,29,1,0,0,0,29,30,1,0,0,0,30,31,3,
+  	12,6,0,31,33,5,1,0,0,32,34,3,10,5,0,33,32,1,0,0,0,33,34,1,0,0,0,34,36,
+  	1,0,0,0,35,28,1,0,0,0,35,36,1,0,0,0,36,37,1,0,0,0,37,38,3,2,1,0,38,40,
+  	5,2,0,0,39,41,5,1,0,0,40,39,1,0,0,0,40,41,1,0,0,0,41,5,1,0,0,0,42,43,
+  	5,1,0,0,43,44,3,12,6,0,44,46,5,1,0,0,45,47,3,10,5,0,46,45,1,0,0,0,46,
+  	47,1,0,0,0,47,49,1,0,0,0,48,42,1,0,0,0,48,49,1,0,0,0,49,50,1,0,0,0,50,
+  	51,5,8,0,0,51,7,1,0,0,0,52,53,5,9,0,0,53,9,1,0,0,0,54,55,7,0,0,0,55,11,
+  	1,0,0,0,56,57,5,10,0,0,57,59,5,6,0,0,58,56,1,0,0,0,59,62,1,0,0,0,60,58,
+  	1,0,0,0,60,61,1,0,0,0,61,63,1,0,0,0,62,60,1,0,0,0,63,64,5,10,0,0,64,13,
+  	1,0,0,0,8,17,28,33,35,40,46,48,60
   };
   staticData->serializedATN = antlr4::atn::SerializedATNView(serializedATNSegment, sizeof(serializedATNSegment) / sizeof(serializedATNSegment[0]));
 
@@ -137,8 +138,8 @@ MolParser::MoleculaContext::MoleculaContext(ParserRuleContext *parent, size_t in
   : ParserRuleContext(parent, invokingState) {
 }
 
-MolParser::Cadeia_principalContext* MolParser::MoleculaContext::cadeia_principal() {
-  return getRuleContext<MolParser::Cadeia_principalContext>(0);
+MolParser::CadeiaContext* MolParser::MoleculaContext::cadeia() {
+  return getRuleContext<MolParser::CadeiaContext>(0);
 }
 
 MolParser::InsaturacaoContext* MolParser::MoleculaContext::insaturacao() {
@@ -205,7 +206,7 @@ MolParser::MoleculaContext* MolParser::molecula() {
       alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 0, _ctx);
     }
     setState(20);
-    cadeia_principal();
+    cadeia();
     setState(21);
     insaturacao();
     setState(22);
@@ -223,36 +224,36 @@ MolParser::MoleculaContext* MolParser::molecula() {
   return _localctx;
 }
 
-//----------------- Cadeia_principalContext ------------------------------------------------------------------
+//----------------- CadeiaContext ------------------------------------------------------------------
 
-MolParser::Cadeia_principalContext::Cadeia_principalContext(ParserRuleContext *parent, size_t invokingState)
+MolParser::CadeiaContext::CadeiaContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* MolParser::Cadeia_principalContext::PREFIXO() {
+tree::TerminalNode* MolParser::CadeiaContext::PREFIXO() {
   return getToken(MolParser::PREFIXO, 0);
 }
 
 
-size_t MolParser::Cadeia_principalContext::getRuleIndex() const {
-  return MolParser::RuleCadeia_principal;
+size_t MolParser::CadeiaContext::getRuleIndex() const {
+  return MolParser::RuleCadeia;
 }
 
-void MolParser::Cadeia_principalContext::enterRule(tree::ParseTreeListener *listener) {
+void MolParser::CadeiaContext::enterRule(tree::ParseTreeListener *listener) {
   auto parserListener = dynamic_cast<MolListener *>(listener);
   if (parserListener != nullptr)
-    parserListener->enterCadeia_principal(this);
+    parserListener->enterCadeia(this);
 }
 
-void MolParser::Cadeia_principalContext::exitRule(tree::ParseTreeListener *listener) {
+void MolParser::CadeiaContext::exitRule(tree::ParseTreeListener *listener) {
   auto parserListener = dynamic_cast<MolListener *>(listener);
   if (parserListener != nullptr)
-    parserListener->exitCadeia_principal(this);
+    parserListener->exitCadeia(this);
 }
 
-MolParser::Cadeia_principalContext* MolParser::cadeia_principal() {
-  Cadeia_principalContext *_localctx = _tracker.createInstance<Cadeia_principalContext>(_ctx, getState());
-  enterRule(_localctx, 2, MolParser::RuleCadeia_principal);
+MolParser::CadeiaContext* MolParser::cadeia() {
+  CadeiaContext *_localctx = _tracker.createInstance<CadeiaContext>(_ctx, getState());
+  enterRule(_localctx, 2, MolParser::RuleCadeia);
 
 #if __cplusplus > 201703L
   auto onExit = finally([=, this] {
@@ -282,8 +283,8 @@ MolParser::RamificacaoContext::RamificacaoContext(ParserRuleContext *parent, siz
   : ParserRuleContext(parent, invokingState) {
 }
 
-MolParser::Cadeia_principalContext* MolParser::RamificacaoContext::cadeia_principal() {
-  return getRuleContext<MolParser::Cadeia_principalContext>(0);
+MolParser::CadeiaContext* MolParser::RamificacaoContext::cadeia() {
+  return getRuleContext<MolParser::CadeiaContext>(0);
 }
 
 MolParser::PosContext* MolParser::RamificacaoContext::pos() {
@@ -325,37 +326,45 @@ MolParser::RamificacaoContext* MolParser::ramificacao() {
   });
   try {
     enterOuterAlt(_localctx, 1);
-    setState(33);
+    setState(35);
     _errHandler->sync(this);
 
     _la = _input->LA(1);
-    if (_la == MolParser::T__0) {
-      setState(27);
-      match(MolParser::T__0);
+    if (_la == MolParser::T__0
+
+    || _la == MolParser::INT) {
       setState(28);
+      _errHandler->sync(this);
+
+      _la = _input->LA(1);
+      if (_la == MolParser::T__0) {
+        setState(27);
+        match(MolParser::T__0);
+      }
+      setState(30);
       pos();
-      setState(29);
-      match(MolParser::T__0);
       setState(31);
+      match(MolParser::T__0);
+      setState(33);
       _errHandler->sync(this);
 
       _la = _input->LA(1);
       if ((((_la & ~ 0x3fULL) == 0) &&
         ((1ULL << _la) & 56) != 0)) {
-        setState(30);
+        setState(32);
         numero();
       }
     }
-    setState(35);
-    cadeia_principal();
-    setState(36);
-    match(MolParser::T__1);
+    setState(37);
+    cadeia();
     setState(38);
+    match(MolParser::T__1);
+    setState(40);
     _errHandler->sync(this);
 
-    switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 3, _ctx)) {
+    switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 4, _ctx)) {
     case 1: {
-      setState(37);
+      setState(39);
       match(MolParser::T__0);
       break;
     }
@@ -423,29 +432,29 @@ MolParser::InsaturacaoContext* MolParser::insaturacao() {
   });
   try {
     enterOuterAlt(_localctx, 1);
-    setState(46);
+    setState(48);
     _errHandler->sync(this);
 
     _la = _input->LA(1);
     if (_la == MolParser::T__0) {
-      setState(40);
-      match(MolParser::T__0);
-      setState(41);
-      pos();
       setState(42);
       match(MolParser::T__0);
+      setState(43);
+      pos();
       setState(44);
+      match(MolParser::T__0);
+      setState(46);
       _errHandler->sync(this);
 
       _la = _input->LA(1);
       if ((((_la & ~ 0x3fULL) == 0) &&
         ((1ULL << _la) & 56) != 0)) {
-        setState(43);
+        setState(45);
         numero();
       }
     }
 
-    setState(48);
+    setState(50);
     match(MolParser::LIGACAO);
    
   }
@@ -498,7 +507,7 @@ MolParser::Grupo_funcionalContext* MolParser::grupo_funcional() {
   });
   try {
     enterOuterAlt(_localctx, 1);
-    setState(50);
+    setState(52);
     match(MolParser::GRUPO_FUNCIONAL);
    
   }
@@ -548,7 +557,7 @@ MolParser::NumeroContext* MolParser::numero() {
   });
   try {
     enterOuterAlt(_localctx, 1);
-    setState(52);
+    setState(54);
     _la = _input->LA(1);
     if (!((((_la & ~ 0x3fULL) == 0) &&
       ((1ULL << _la) & 56) != 0))) {
@@ -614,21 +623,21 @@ MolParser::PosContext* MolParser::pos() {
   try {
     size_t alt;
     enterOuterAlt(_localctx, 1);
-    setState(58);
+    setState(60);
     _errHandler->sync(this);
-    alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 6, _ctx);
+    alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 7, _ctx);
     while (alt != 2 && alt != atn::ATN::INVALID_ALT_NUMBER) {
       if (alt == 1) {
-        setState(54);
+        setState(56);
         match(MolParser::INT);
-        setState(55);
+        setState(57);
         match(MolParser::T__5); 
       }
-      setState(60);
+      setState(62);
       _errHandler->sync(this);
-      alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 6, _ctx);
+      alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 7, _ctx);
     }
-    setState(61);
+    setState(63);
     match(MolParser::INT);
    
   }

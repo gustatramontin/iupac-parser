@@ -1,20 +1,15 @@
 #include "src/molecule.hpp"
 
 int main() {
-	Atom c1 = Atom::carbon();
-	Atom c2 = Atom::carbon();
-	Atom c3 = Atom::carbon();
 
-	Molecule metano("propane");
-	Bond b1{};
-	Bond b2{};
-	Bond b3{};
-        b1.add(1,1);
-        b2.add(0,1).add(2,1);
-        b3.add(1,1);
-	metano.addAtom(c1, b1);
-	metano.addAtom(c2, b2);
-	metano.addAtom(c3, b3);
+	Molecule mol("4,3-etil-but-2-enol");
+        mol.set_cadeia_principal("but");
+        mol.set_grupo_funcional("ol");
+        mol.add_substituente(4, "et");
+        mol.add_substituente(3, "et");
+        mol.add_insaturacao(2, "en");
 
-	metano.print();
+        mol.print();
+
+
 }

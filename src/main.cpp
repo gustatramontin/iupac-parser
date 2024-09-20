@@ -14,32 +14,28 @@ public:
 
   Molecule m;
   bool is_ramificacao = false;
-  MyListener(): m{"Test"} {}
+  MyListener(string name): m{name} {}
   virtual void enterMolecula(MolParser::MoleculaContext * ctx) override {}
   virtual void exitMolecula(MolParser::MoleculaContext * ctx) override { 
 	  m.print();
   }
 
-  virtual void enterCadeia_principal(MolParser::Cadeia_principalContext * ctx) override { 
+  virtual void enterCadeia(MolParser::CadeiaContext * ctx) override { 
 
         cout << ctx->PREFIXO()->getText() << "\n";
 	if (!is_ramificacao)
-		m.add_cadeia_principal(ctx->PREFIXO()->getText());
+		m.set_cadeia_principal(ctx->PREFIXO()->getText());
     }
-  virtual void exitCadeia_principal(MolParser::Cadeia_principalContext * ctx) override { }
+  virtual void exitCadeia(MolParser::CadeiaContext * ctx) override { }
 
   virtual void enterRamificacao(MolParser::RamificacaoContext * ctx) override {
 	  is_ramificacao = true;
-	  string prefix = ctx->cadeia_principal()->PREFIXO()->getText();
-          auto pos_token = ctx->pos()->INT();
-		if (pos_token.size() == 0) {
-			int pos = 0;
-			  m.add_ramificacao(pos, prefix);
-		}
+	  string prefix = ctx->cadeia()->PREFIXO()->getText();
+
 	  for ( auto pos_token : ctx->pos()->INT()) {
 		  int pos = stoi(pos_token->getText());
 		  cout << pos << "\n";
-		  m.add_ramificacao(pos, prefix);
+		  m.add_substituente(pos, prefix);
 	  }
   }
   virtual void exitRamificacao(MolParser::RamificacaoContext * ctx) override { 
@@ -69,13 +65,19 @@ public:
 int main(int argc, const char* argv[]) {
   std::ifstream stream;
   stream.open(argv[1]);
-  ANTLRInputStream input(stream);
+
+  char molecule_name[256];
+  stream.getline(molecule_name, 256);
+  string name(molecule_name);
+
+  ANTLRInputStream input(name);
   MolLexer lexer(&input);
   CommonTokenStream tokens(&lexer);
   MolParser parser(&tokens);
 
   tree::ParseTree *tree = parser.molecula();
-  MyListener listener;
+
+  MyListener listener(name);
   tree::ParseTreeWalker::DEFAULT.walk(&listener, tree);
 
   return 0;

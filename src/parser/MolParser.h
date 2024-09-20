@@ -17,7 +17,7 @@ public:
   };
 
   enum {
-    RuleMolecula = 0, RuleCadeia_principal = 1, RuleRamificacao = 2, RuleInsaturacao = 3, 
+    RuleMolecula = 0, RuleCadeia = 1, RuleRamificacao = 2, RuleInsaturacao = 3, 
     RuleGrupo_funcional = 4, RuleNumero = 5, RulePos = 6
   };
 
@@ -39,7 +39,7 @@ public:
 
 
   class MoleculaContext;
-  class Cadeia_principalContext;
+  class CadeiaContext;
   class RamificacaoContext;
   class InsaturacaoContext;
   class Grupo_funcionalContext;
@@ -50,7 +50,7 @@ public:
   public:
     MoleculaContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    Cadeia_principalContext *cadeia_principal();
+    CadeiaContext *cadeia();
     InsaturacaoContext *insaturacao();
     Grupo_funcionalContext *grupo_funcional();
     antlr4::tree::TerminalNode *EOF();
@@ -64,9 +64,9 @@ public:
 
   MoleculaContext* molecula();
 
-  class  Cadeia_principalContext : public antlr4::ParserRuleContext {
+  class  CadeiaContext : public antlr4::ParserRuleContext {
   public:
-    Cadeia_principalContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    CadeiaContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     antlr4::tree::TerminalNode *PREFIXO();
 
@@ -75,13 +75,13 @@ public:
    
   };
 
-  Cadeia_principalContext* cadeia_principal();
+  CadeiaContext* cadeia();
 
   class  RamificacaoContext : public antlr4::ParserRuleContext {
   public:
     RamificacaoContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    Cadeia_principalContext *cadeia_principal();
+    CadeiaContext *cadeia();
     PosContext *pos();
     NumeroContext *numero();
 

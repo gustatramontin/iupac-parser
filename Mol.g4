@@ -1,9 +1,9 @@
 grammar Mol;
 
-molecula    : ramificacao* cadeia_principal insaturacao grupo_funcional EOF;
+molecula    : ramificacao* cadeia insaturacao grupo_funcional EOF;
 
-cadeia_principal      : PREFIXO;
-ramificacao           : ('-'? pos '-' numero?)? cadeia_principal 'il' '-'?;
+cadeia: PREFIXO;
+ramificacao           : ('-'? pos '-' numero?)? cadeia'il' '-'?;
 insaturacao           : ('-' pos '-' numero?)? (LIGACAO);
 grupo_funcional       : GRUPO_FUNCIONAL;
 

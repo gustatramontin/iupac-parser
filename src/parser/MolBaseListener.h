@@ -19,8 +19,8 @@ public:
   virtual void enterMolecula(MolParser::MoleculaContext * /*ctx*/) override { }
   virtual void exitMolecula(MolParser::MoleculaContext * /*ctx*/) override { }
 
-  virtual void enterCadeia_principal(MolParser::Cadeia_principalContext * /*ctx*/) override { }
-  virtual void exitCadeia_principal(MolParser::Cadeia_principalContext * /*ctx*/) override { }
+  virtual void enterCadeia(MolParser::CadeiaContext * /*ctx*/) override { }
+  virtual void exitCadeia(MolParser::CadeiaContext * /*ctx*/) override { }
 
   virtual void enterRamificacao(MolParser::RamificacaoContext * /*ctx*/) override { }
   virtual void exitRamificacao(MolParser::RamificacaoContext * /*ctx*/) override { }

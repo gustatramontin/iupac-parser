@@ -22,9 +22,11 @@ public:
 
     virtual void enterCadeia(MolParser::CadeiaContext * ctx) override { 
 
-        cout << ctx->PREFIXO()->getText() << "\n";
+        CadeiaTipo tipo = Aberta;
+        if (ctx->CICLO())
+            tipo = Ciclica;
         if (!is_ramificacao)
-            m.set_cadeia_principal(ctx->PREFIXO()->getText());
+            m.set_cadeia_principal(ctx->PREFIXO()->getText(), tipo);
     }
     virtual void exitCadeia(MolParser::CadeiaContext * ctx) override { }
 
@@ -44,9 +46,11 @@ public:
 
     virtual void enterInsaturacao(MolParser::InsaturacaoContext * ctx) override { 
         string licacao = ctx->LIGACAO()->getText();
-        for (auto localizador : ctx->pos()->INT()) {
-            int pos = stoi(localizador->getText());
-            m.add_insaturacao(pos, licacao);
+        if (ctx->pos()) {
+            for (auto localizador : ctx->pos()->INT()) {
+                int pos = stoi(localizador->getText());
+                m.add_insaturacao(pos, licacao);
+            }
         }
     }
     virtual void exitInsaturacao(MolParser::InsaturacaoContext * ctx) override { }

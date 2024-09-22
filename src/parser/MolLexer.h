@@ -12,8 +12,8 @@
 class  MolLexer : public antlr4::Lexer {
 public:
   enum {
-    T__0 = 1, T__1 = 2, T__2 = 3, T__3 = 4, T__4 = 5, T__5 = 6, PREFIXO = 7, 
-    LIGACAO = 8, GRUPO_FUNCIONAL = 9, INT = 10, WHITESPACE = 11
+    T__0 = 1, T__1 = 2, T__2 = 3, T__3 = 4, T__4 = 5, T__5 = 6, CICLO = 7, 
+    PREFIXO = 8, LIGACAO = 9, GRUPO_FUNCIONAL = 10, INT = 11, WHITESPACE = 12
   };
 
   explicit MolLexer(antlr4::CharStream *input);

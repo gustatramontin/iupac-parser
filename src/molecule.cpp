@@ -13,14 +13,23 @@ Atom Atom::hidroxila() {
         return c;
 }
 
-CarbonSeries::CarbonSeries(): n{0}, pos{0} {}
-CarbonSeries::CarbonSeries(int n, int pos): n{n}, pos{pos} {}
+Cadeia::Cadeia(): n{0}, tipo{Aberta}, pos{0} {}
+Cadeia::Cadeia(int n, CadeiaTipo tipo, int pos): n{n}, tipo{tipo}, pos{pos} {}
 
-int CarbonSeries::inicio() {
+int Cadeia::inicio() {
     return pos;
 }
-int CarbonSeries::tamanho() {
+int Cadeia::tamanho() {
     return n;
+}
+
+string Cadeia::tipo_de_cadeia() {
+    unordered_map<CadeiaTipo, string> tipo_to_string;
+    tipo_to_string[Aberta] = "aberta";
+    tipo_to_string[Ciclica] = "ciclica";
+    tipo_to_string[Aromatica] = "aromatica";
+
+    return tipo_to_string[tipo];
 }
 
 Insaturacao::Insaturacao(): pos{0}, tipo{0} {}
@@ -38,6 +47,8 @@ Insaturacao Insaturacao::tripla(int pos) {
 string Insaturacao::name() {
     if (tipo == 2) return "dupla";
     else if (tipo == 3) return "tripla";
+    
+    return "indefinida";
 }
 
 int Insaturacao::posicao() {
@@ -63,15 +74,15 @@ int Molecule::prefixo(string n) {
 }
 
 
-void Molecule::set_cadeia_principal(string prefix) {
+void Molecule::set_cadeia_principal(string prefix, CadeiaTipo tipo) {
     int n = prefixo(prefix);
-    cadeia_principal = CarbonSeries(n);
+    cadeia_principal = Cadeia(n, tipo);
 }
 
 void Molecule::add_substituente(int pos, string prefix) {
     int n = prefixo(prefix);
 
-    CarbonSeries c(n, pos);
+    Cadeia c(n, Aberta, pos);
     substituentes.push_back(c);
 }
 
@@ -99,10 +110,10 @@ void Molecule::set_grupo_funcional(string grupo) {
 
 void Molecule::print() {
     cout << name << "\n";
-    cout << "cadeia principal = " << cadeia_principal.tamanho() << "\n";
+    cout << "cadeia principal: " << cadeia_principal.tipo_de_cadeia() << " = " << cadeia_principal.tamanho() << "\n";
 
     cout << "substituentes" << "\n";
-    for (CarbonSeries r : substituentes)
+    for (Cadeia r : substituentes)
         cout << r.inicio() << " = " << r.tamanho() << "\n";
 
     cout << "insaturacaoes" << "\n";

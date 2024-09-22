@@ -70,7 +70,7 @@ public:
 
 	Molecule(string name);
 	int prefixo(string n);
-        void set_cadeia_principal(string prefix);
+        void set_cadeia_principal(string prefix, CadeiaTipo tipo);
         void add_substituente(int pos, string prefix);
         void add_insaturacao(int pos, string tipo);
         void set_grupo_funcional(string grupo);

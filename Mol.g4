@@ -2,13 +2,15 @@ grammar Mol;
 
 molecula    : ramificacao* cadeia insaturacao grupo_funcional EOF;
 
-cadeia: PREFIXO;
+cadeia: CICLO? PREFIXO;
 ramificacao           : ('-'? pos '-' numero?)? cadeia 'il' '-'?;
 insaturacao           : ('-' pos '-' numero?)? (LIGACAO);
 grupo_funcional       : GRUPO_FUNCIONAL;
 
 numero      : 'di' | 'tri' | 'tetra';
 pos         : (INT ',')* INT;
+
+CICLO : 'ciclo';
 
 PREFIXO : 
    'met'

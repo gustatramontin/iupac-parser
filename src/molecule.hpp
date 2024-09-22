@@ -26,18 +26,25 @@ public:
         Bond & add(int a, int i);
         string show();
 };
-
-
-class CarbonSeries {
+enum CadeiaTipo {
+        Aberta,
+        Ciclica,
+        Aromatica
+};
+class Cadeia {
     int n;
     int pos;
+    CadeiaTipo tipo;
+    
 public:
-    CarbonSeries();
-    CarbonSeries(int n, int pos=1);
+    Cadeia();
+    Cadeia(int n_carbonos, CadeiaTipo tipo, int pos=1);
     int inicio();
     int tamanho();
+    string tipo_de_cadeia();
 
 };
+
 
 class Insaturacao {
     int pos;
@@ -56,9 +63,9 @@ class Molecule {
 public:
 	string name;
 
-        CarbonSeries cadeia_principal;
+        Cadeia cadeia_principal;
         Atom grupo_funcional;
-        vector<CarbonSeries> substituentes;
+        vector<Cadeia> substituentes;
         vector<Insaturacao> insaturacoes;
 
 	Molecule(string name);

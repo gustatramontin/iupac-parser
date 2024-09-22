@@ -1,13 +1,4 @@
-#include <iostream>
-
-#include "antlr4-runtime.h"
-#include "src/parser/MolLexer.h"
-#include "src/parser/MolParser.h"
-#include "src/parser/MolListener.h"
-#include "src/molecule.hpp"
-
-using namespace std;
-using namespace antlr4;
+#include "src/lib.hpp"
 
 class  MyListener : public MolListener {
 public:
@@ -16,9 +7,7 @@ public:
     bool is_ramificacao = false;
     MyListener(string name): m{name} {}
     virtual void enterMolecula(MolParser::MoleculaContext * ctx) override {}
-    virtual void exitMolecula(MolParser::MoleculaContext * ctx) override { 
-        m.print();
-    }
+    virtual void exitMolecula(MolParser::MoleculaContext * ctx) override {}
 
     virtual void enterCadeia(MolParser::CadeiaContext * ctx) override { 
 
@@ -72,23 +61,15 @@ public:
 
 };
 
-int main(int argc, const char* argv[]) {
-    std::ifstream stream;
-    stream.open(argv[1]);
-
-    char molecule_name[256];
-    stream.getline(molecule_name, 256);
-    string name(molecule_name);
-
-    ANTLRInputStream input(name);
+Molecule parse(string iupac_molecule) {
+    ANTLRInputStream input(iupac_molecule);
     MolLexer lexer(&input);
     CommonTokenStream tokens(&lexer);
     MolParser parser(&tokens);
 
     tree::ParseTree *tree = parser.molecula();
 
-    MyListener listener(name);
+    MyListener listener(iupac_molecule);
     tree::ParseTreeWalker::DEFAULT.walk(&listener, tree);
-
-    return 0;
+    return listener.m;
 }
